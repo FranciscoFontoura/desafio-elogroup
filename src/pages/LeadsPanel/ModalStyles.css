@@ -1,0 +1,32 @@
+form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.right-container {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+input {
+  background-color: #fff;
+  border: 1px solid #000;
+  cursor: pointer;
+  color: #000;
+  font-size: 20px;
+  padding: 16px 57px;
+  width: 100%;
+}
+
+.new-lead-button:hover {
+  background-color:#000;
+  color:#fff;
+}
