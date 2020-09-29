@@ -1,6 +1,6 @@
 ## Desafio EloGroup
 
-Esse repositório corresponde a solucao para o desafio proposto.
+Esse repositório corresponde a solução para o desafio proposto.
 
 
 ## Instalação
