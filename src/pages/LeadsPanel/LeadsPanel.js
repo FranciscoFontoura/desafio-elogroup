@@ -1,10 +1,8 @@
 import React, { Component, useState } from "react";
-import { Link } from "react-router-dom";
 import { Container } from "./styles";
 import Board from "../../components/Board";
-import Modal from "react-modal";
 import { useForm } from "react-hook-form";
-import "./ModalStyles.css";
+import { Button, Modal, FormGroup, Label, Input, Form } from "reactstrap";
 
 function LeadsPanel() {
   const [checkBoxChecked, setCheckBoxChecked] = useState({
@@ -17,10 +15,9 @@ function LeadsPanel() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onSubmit = (data) => {
-    if (data.bpm === false) {
-      return console.log("teste");
-    }
+    
     setModalIsOpen(false);
+    return console.log(data);
   };
 
   function changeCheck(e) {
@@ -49,120 +46,120 @@ function LeadsPanel() {
     }
   }
 
-  Modal.setAppElement("#root");
-
   return (
     <Container>
-      <div>
+      <section>
         <h1>Painel de Leads</h1>
-        <button onClick={() => setModalIsOpen(true)}>novo</button>
-      </div>
+        <Button color="secondary" onClick={() => setModalIsOpen(true)}>
+          Novo Lead
+        </Button>
+      </section>
+      <Board></Board>
 
       <Modal
         isOpen={modalIsOpen}
-        onRequestClose={() => setModalIsOpen(false)}
-        style={{
-          content: {
-            backgroundColor: "#404040",
-            position: "fixed",
-            top: "20%",
-            left: "20%",
-            bottom: "20%",
-            right: "20%",
-          },
-        }}
+        toggle={() => setModalIsOpen(false)}
+        contentClassName="bg-dark"
       >
-        <h1>Novo Lead</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="right-container">
-            <p>Nome*</p>
-            <input
+        <Form onSubmit={handleSubmit(onSubmit)} style={{padding: '20px'}}>
+          <h1>Novo Lead</h1>
+          <FormGroup>
+            <Label>Nome*</Label>
+            <Input
               name="name"
               type="text"
-              ref={register({ required: true })}
-            ></input>
+              innerRef={register({ required: true })}
+            ></Input>
+          </FormGroup>
 
-            <p>Telefone*</p>
-            <input
+          <FormGroup>
+            <Label>Telefone*</Label>
+            <Input
               name="phone"
               type="text"
-              ref={register({ required: true })}
-            ></input>
+              innerRef={register({ required: true })}
+            ></Input>
+          </FormGroup>
 
-            <p>Email*</p>
-            <input
+          <FormGroup>
+            <Label>Email*</Label>
+            <Input
               name="email"
               type="email"
-              ref={register({ required: true })}
-            ></input>
-          </div>
-          <div className="left-container">
-            <h2>Oportunidades*</h2>
-            <ul>
-              <li>
-                <input
-                  name="checkAll"
-                  type="checkbox"
-                  onChange={checkUncheckAll}
-                ></input>
-                <label>Marcar Todas</label>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <input
-                  name="RPA"
-                  type="checkbox"
-                  onChange={changeCheck}
-                  checked={checkBoxChecked.rpa}
-                  ref={register({ required: false })}
-                ></input>
-                <label>RPA</label>
-              </li>
-            </ul>
+              innerRef={register({ required: true })}
+            ></Input>
+          </FormGroup>
 
-            <ul>
-              <li>
-                <input
-                  name="digitalProduct"
-                  type="checkbox"
-                  onChange={changeCheck}
-                  checked={checkBoxChecked.digitalProduct}
-                  ref={register({ required: false })}
-                ></input>
-                <label>Produto Digital</label>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <input
-                  name="analytics"
-                  type="checkbox"
-                  onChange={changeCheck}
-                  checked={checkBoxChecked.analytics}
-                  ref={register({ required: false })}
-                ></input>
-                <label>Analytics</label>
-              </li>
-            </ul>
-            <ul>
-              <li>
-                <input
-                  name="BPM"
-                  type="checkbox"
-                  onChange={changeCheck}
-                  checked={checkBoxChecked.bpm}
-                  ref={register({ required: false })}
-                ></input>
-                <label>BPM</label>
-              </li>
-            </ul>
+          <Label>Oportunidades*</Label>
 
-            <input type="submit" value="input"></input>
-          </div>
-        </form>
+          <FormGroup check>
+            <Label check>
+              <Input
+                name="checkAll"
+                type="checkbox"
+                onChange={checkUncheckAll}
+              />
+              Marcar Todas
+            </Label>
+          </FormGroup>
+
+          <FormGroup check>
+            <Label check>
+              <Input
+                name="RPA"
+                type="checkbox"
+                onChange={changeCheck}
+                checked={checkBoxChecked.rpa}
+                innerRef={register({ required: false })}
+              />
+              RPA
+            </Label>
+          </FormGroup>
+
+          <FormGroup check>
+            <Label check>
+              <Input
+                name="digitalProduct"
+                type="checkbox"
+                onChange={changeCheck}
+                checked={checkBoxChecked.digitalProduct}
+                innerRef={register({ required: false })}
+              />
+              Produto Digital
+            </Label>
+          </FormGroup>
+
+          <FormGroup check>
+            <Label check>
+              <Input
+                name="analytics"
+                type="checkbox"
+                onChange={changeCheck}
+                checked={checkBoxChecked.analytics}
+                innerRef={register({ required: false })}
+              />
+              Analytics
+            </Label>
+          </FormGroup>
+
+          <FormGroup check>
+            <Label check>
+              <Input
+                name="BPM"
+                type="checkbox"
+                onChange={changeCheck}
+                checked={checkBoxChecked.bpm}
+                innerRef={register({ required: false })}
+              />
+              BPM
+            </Label>
+          </FormGroup>
+
+          <Button type="submit" color="secondary" style={{margin: '20px 0px 0px 0px'}}>
+            Registrar
+          </Button>
+        </Form>
       </Modal>
-      <Board></Board>
     </Container>
   );
 }

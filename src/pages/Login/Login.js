@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "./styles";
 import { useForm } from "react-hook-form";
 import { useHistory } from "react-router-dom";
+import { UncontrolledAlert, Input, Button } from "reactstrap";
 
 function Login() {
   const { register, handleSubmit, watch, errors } = useForm();
@@ -13,51 +14,56 @@ function Login() {
 
   return (
     <Container>
-      <form className="form-container" onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <section>
-          <div>
-            <h3>Usuário*</h3>
-            <input
+            <Input
+              placeholder="Usuário"
               name="username"
               type="text"
-              ref={register({ required: true })}
-            ></input>
-            {errors.username && <p>Favor inserir o usuário</p>}
-          </div>
+              innerRef={register({ required: true })}
+            />
+            {errors.username && (
+              <UncontrolledAlert color="primary">
+                Insira um usuário!
+              </UncontrolledAlert>
+            )}
 
-          <h3>Password*</h3>
-          <input
+          <Input
+            placeholder="Senha"
             name="password"
             type="password"
-            ref={register({
+            innerRef={register({
               required: true,
               pattern: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
             })}
-          ></input>
+          />
           {errors.password && (
-            <p>
-              Favor inserir um password que contenha no minimo 8 caracteres,
-              dentre eles um caracter especial e um numero
-            </p>
+            <UncontrolledAlert color="primary">
+              Favor inserir um password válido!
+            </UncontrolledAlert>
           )}
 
-          <h3>Confirmação Password*</h3>
-          <input
+          <Input
+            placeholder="Confirmar Senha"
             name="passwordConfirmation"
             type="password"
-            ref={register({
+            innerRef={register({
               required: true,
               validate: (value) => {
                 return value === watch("password");
               },
             })}
-          ></input>
-          {errors.passwordConfirmation && <p>Passwords diferentes!</p>}
+          />
+          {errors.passwordConfirmation && (
+            <UncontrolledAlert color="primary">
+              Passwords diferentes!
+            </UncontrolledAlert>
+          )}
         </section>
 
-        <div className="submit-container">
-          <input type="submit" value="Registrar"></input>
-        </div>
+        <Button type="submit" value="Registrar" color="secondary">
+          Registrar
+        </Button>
       </form>
     </Container>
   );

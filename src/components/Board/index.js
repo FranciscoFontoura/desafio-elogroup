@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../List";
 import produce from "immer";
 import BoardContext from "./context";
 import { Container } from "./styles";
-import { loadLists } from "../../service/api";
+import axios from "axios";
 
-const data = loadLists();
 
 function Board() {
-  const [lists, setLists] = useState(data);
+  const [isLoading, setLoading] = useState(true);
+  const [lists, setLists] = useState();
+
+  useEffect(() => {
+    axios.get('https://run.mocky.io/v3/30eb0c8f-d788-444c-81d6-9e9f2ad721c3').then(res => {
+      setLists(res.data);
+      setLoading(false);
+    });
+  }, []);
   
+  if (isLoading) {
+    return <div>Carregando</div>
+  }
   
   function move(fromList, toList, from, to) {
     if (fromList === 0 && toList === 2) {

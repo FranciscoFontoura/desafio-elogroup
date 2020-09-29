@@ -2,23 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: 30px 0;
+  margin-top: 30px;
   height: calc(100%-80px);
   display: flex;
-
-  button {
-    background-color: #fff;
-    border: 1px solid #000;
-    cursor: pointer;
-    color: #000;
-    font-size: 20px;
-    padding: 16px 57px;
-  }
-
-  div {
-    margin-left: 30px;
-  }
-
+  flex-direction: column;
   section {
-    width: 100%;
+    display:flex;
+    width: 930px;
+    flex-direction: row;
+    justify-content:space-between;
+    align-self:center;
   }
 `

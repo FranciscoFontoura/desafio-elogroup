@@ -1,6 +1,6 @@
-const axios = require("axios");
-
 export function loadLists() {
+
+  
   
   const data = [{
     title: "Cliente em Potencial",

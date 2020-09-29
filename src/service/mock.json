@@ -1,0 +1,53 @@
+[
+  {
+    "title": "cliente em potencial",
+    "cards": [
+      {
+        "id": 1,
+        "content": "Empresa 1"
+      },
+      {
+        "id": 2,
+        "content": "Empresa 2"
+      }
+    ]
+  },
+  {
+    "title": "cliente em potencial2",
+    "cards": [
+      {
+        "id": 3,
+        "content": "Empresa 3"
+      },
+      {
+        "id": 4,
+        "content": "Empresa 4"
+      },
+      {
+        "id": 5,
+        "content": "Empresa 5"
+      },
+      {
+        "id": 6,
+        "content": "Empresa 6"
+      }
+    ]
+  },
+  {
+    "title": "cliente em potencial3",
+    "cards": [
+      {
+        "id": 7,
+        "content": "Empresa 7"
+      },
+      {
+        "id": 8,
+        "content": "Empresa 8"
+      },
+      {
+        "id": 9,
+        "content": "Empresa 9"
+      }
+    ]
+  }
+]
