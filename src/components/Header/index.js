@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from "c:/Projects/eloGroup/desafio/src/assets/logo.png";
+import logo from "../../assets/logo.png";
 
 import { Container } from './styles';
 
