@@ -21,9 +21,9 @@ function LeadsPanel() {
 
   const onSubmit = (data) => {
     postLists(data);
+    console.log(data);
     setModalIsOpen(false);
     notify();
-    return console.log(data);
   };
 
   function changeCheck(e) {
@@ -55,7 +55,7 @@ function LeadsPanel() {
   return (
     <Container>
       <section>
-        <h1>Painel de Leads</h1>
+        <h2>Painel de Leads</h2>
         <Button color="secondary" onClick={() => setModalIsOpen(true)}>
           Novo Lead
         </Button>
