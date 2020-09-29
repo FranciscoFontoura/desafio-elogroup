@@ -12,7 +12,6 @@ function Board() {
 
   useEffect(() => {
     getLists().then((res) => {
-      console.log(res.data);
       setLists(res.data);
       setLoading(false);
     });
@@ -48,9 +47,11 @@ function Board() {
   return (
     <BoardContext.Provider value={{ lists, move }}>
       <Container>
-        {lists.map((list, index) => (
-          <List key={list.title} index={index} data={list} />
-        ))}
+        {lists.map((list, index) => {
+          return (
+            <List key={list.title} index={index} data={list} />
+          );
+        })}
       </Container>
     </BoardContext.Provider>
   );

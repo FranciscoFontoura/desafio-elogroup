@@ -20,8 +20,6 @@ function LeadsPanel() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onSubmit = (data) => {
-    postLists(data);
-    console.log(data);
     setModalIsOpen(false);
     notify();
   };
