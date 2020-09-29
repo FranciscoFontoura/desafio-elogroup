@@ -4,6 +4,7 @@ import produce from "immer";
 import BoardContext from "./context";
 import { Container } from "./styles";
 import axios from "axios";
+import {getLists} from "../../service/api";
 
 
 function Board() {
@@ -11,7 +12,8 @@ function Board() {
   const [lists, setLists] = useState();
 
   useEffect(() => {
-    axios.get('https://run.mocky.io/v3/30eb0c8f-d788-444c-81d6-9e9f2ad721c3').then(res => {
+    getLists().then(res => {
+      console.log(res.data)
       setLists(res.data);
       setLoading(false);
     });

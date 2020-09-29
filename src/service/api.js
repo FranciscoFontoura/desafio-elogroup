@@ -1,59 +1,17 @@
-export function loadLists() {
+const axios = require('axios');
 
-  
-  
-  const data = [{
-    title: "Cliente em Potencial",
-    cards: [
-      {
-        id: 1,
-        content: "Empresa 1",
-      },
-      {
-        id: 2,
-        content: "Empresa 2",
-      },
-      {
-        id: 3,
-        content: "Empresa 3",
-      },
-      {
-        id: 4,
-        content: "Empresa 4",
-      },
-      {
-        id: 5,
-        content: "Empresa 5",
-      },
-    ],
-  },
-  {
-    title: "Dados Confirmados",
-    cards: [
-      {
-        id: 6,
-        content: "Empresa 6",
-      },
-    ],
-  },
-  {
-    title: "Reunião Agendada",
-    cards: [
-      {
-        id: 7,
-        content: "Empresa 7",
-      },
-      {
-        id: 8,
-        content: "Empresa 8",
-      },
-      {
-        id: 9,
-        content: "Empresa 9",
-      },
-    ],
-  },]
+export async function getLists() {
 
-  return data;
+  let res = await axios.post('https://run.mocky.io/v3/30eb0c8f-d788-444c-81d6-9e9f2ad721c3')
+  console.log(res.data);
+  return res;
+
+}
+
+export async function postLists(data) {
+  
+  await axios.post('http://localhost:4000/board/', data);
+
+  console.log(data);
 
 }

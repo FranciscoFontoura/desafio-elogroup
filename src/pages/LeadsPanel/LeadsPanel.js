@@ -1,22 +1,28 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Container } from "./styles";
 import Board from "../../components/Board";
 import { useForm } from "react-hook-form";
 import { Button, Modal, FormGroup, Label, Input, Form } from "reactstrap";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { postLists } from "../../service/api"
 
 function LeadsPanel() {
+
+  const notify = () => toast.dark("Lead adicionado com sucesso!");
   const [checkBoxChecked, setCheckBoxChecked] = useState({
     rpa: false,
     digitalProduct: false,
     analytics: false,
     bpm: false,
   });
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { register, handleSubmit } = useForm();
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onSubmit = (data) => {
-    
+    postLists(data);
     setModalIsOpen(false);
+    notify();
     return console.log(data);
   };
 
@@ -61,7 +67,7 @@ function LeadsPanel() {
         toggle={() => setModalIsOpen(false)}
         contentClassName="bg-dark"
       >
-        <Form onSubmit={handleSubmit(onSubmit)} style={{padding: '20px'}}>
+        <Form onSubmit={handleSubmit(onSubmit)} style={{ padding: "20px" }}>
           <h1>Novo Lead</h1>
           <FormGroup>
             <Label>Nome*</Label>
@@ -155,11 +161,26 @@ function LeadsPanel() {
             </Label>
           </FormGroup>
 
-          <Button type="submit" color="secondary" style={{margin: '20px 0px 0px 0px'}}>
+          <Button
+            type="submit"
+            color="secondary"
+            style={{ margin: "20px 0px 0px 0px" }}
+          >
             Registrar
           </Button>
         </Form>
       </Modal>
+
+      <ToastContainer
+        position="bottom-center"
+        autoClose={3000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
     </Container>
   );
 }
