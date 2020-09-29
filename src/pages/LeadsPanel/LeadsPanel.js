@@ -5,10 +5,9 @@ import { useForm } from "react-hook-form";
 import { Button, Modal, FormGroup, Label, Input, Form } from "reactstrap";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { postLists } from "../../service/api"
+import { postLists } from "../../service/api";
 
 function LeadsPanel() {
-
   const notify = () => toast.dark("Lead adicionado com sucesso!");
   const [checkBoxChecked, setCheckBoxChecked] = useState({
     rpa: false,
@@ -20,6 +19,7 @@ function LeadsPanel() {
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onSubmit = (data) => {
+    //postLists(data);
     setModalIsOpen(false);
     notify();
   };

@@ -11,9 +11,9 @@ export async function getLists() {
 export async function postLists(data) {
 
   const params = { 
-    id: 10 , 
+    id: "next id" , 
     content: data.name}
 
-  await axios.post('http://localhost:4000/board', params);
+  await axios.post('http://localhost:4000/board/1/cards', params);
 
 }
